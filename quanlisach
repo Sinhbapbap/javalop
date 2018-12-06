@@ -1,0 +1,132 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package kethua_bai2;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ *
+ * @author ThuSinh
+ */
+public class quanlisach {
+    ArrayList<sachgiaokhoa> listsgk = new ArrayList<>();
+    ArrayList<sachthamkhao> liststk = new ArrayList<>();
+    Scanner sc = new Scanner(System.in);
+    
+    public sachgiaokhoa nhapMotSachGiaoKhoa(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Nhập mã sách: ");
+        String masach = in.nextLine();
+        System.out.println("Nhập ngày nhập: ");
+        String ngaynhap = in.nextLine();
+        System.out.println("Nhập đơn gia: ");
+        float dongia = in.nextFloat();
+        System.out.println("Nhập số lượng: ");
+        int soluong = in.nextInt();
+        System.out.println("Nhập nhà xuất bản: ");
+        String nhaxuatban = in.nextLine();
+        System.out.println("Nhập tình trạng sách: ");
+        String tinhtrang = in.nextLine();
+        sachgiaokhoa sgk = new sachgiaokhoa(masach, ngaynhap, dongia, soluong, nhaxuatban, tinhtrang);
+         return sgk;
+    }
+    public void nhapDanhSachSGK(){
+        Scanner in = new Scanner(System.in);
+        String traloi;
+        do{
+            this.listsgk.add(this.nhapMotSachGiaoKhoa());
+            System.out.println("Bạn có muốn nhập tiếp không: (c/k)?");
+            traloi = in.next();
+        }while (traloi.equals("c"));
+        
+    }
+    public  void xuatDanhSachSGK(){
+        System.out.println("mã sách \tngày nhập \tđơn giá \tsố lượngc\tnhà xuất bản \ttình trạng");
+        for(int i= 0; i< this.listsgk.size(); i++)
+        {
+            System.out.println(this.listsgk.get(i).toString());
+        }
+    }
+    
+   public void thanhTien(){
+       double tienmoi = 0.0f;
+       double tiencu = 0.0f;
+       double tt = 0.0f;
+       for( int i =0 ; i < this.listsgk.size(); i++)
+       {
+           if("moi".equals(listsgk.get(i).getTinhtrang())){
+               tienmoi+=listsgk.get(i).getSoluong()* listsgk.get(i).getDongia();
+           }else{
+               tiencu+=listsgk.get(i).getSoluong()*listsgk.get(i).getDongia()*0.5;
+           }
+       
+       }
+       tt= tienmoi+ tiencu;
+       System.out.println("Thanh tiền sách mới + sách cũ : " + tt);
+   }
+   
+   
+   /* Phần Sách Tham Khảo*/
+    public sachthamkhao nhapMotSachThamKhao(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Nhập mã sách: ");
+        String masach = in.nextLine();
+        System.out.println("Nhập ngày nhập: ");
+        String ngaynhap = in.nextLine();
+        System.out.println("Nhập đơn gia: ");
+        float dongia = in.nextFloat();
+        System.out.println("Nhập số lượng: ");
+        int soluong = in.nextInt();
+        System.out.println("Nhập nhà xuất bản: ");
+        String nhaxuatban = in.nextLine();
+        System.out.println("Nhập thuế : ");
+        float thue = in.nextFloat();
+        sachthamkhao stk = new sachthamkhao(masach, ngaynhap, dongia, soluong, nhaxuatban, thue);
+         return stk;
+    }
+    public void nhapDanhSachSTK(){
+        Scanner in = new Scanner(System.in);
+        String traloi;
+        do{
+            this.liststk.add(this.nhapMotSachThamKhao());
+            System.out.println("Bạn có muốn nhập tiếp không: (c/k)?");
+            traloi = in.next();
+        }while (traloi.equals("c"));
+        
+    }
+    public  void xuatDanhSachSTK(){
+        System.out.println("mã sách \tngày nhập \tđơn giá \tsố lượngc\tnhà xuất bản \tthue");
+        for(int i= 0; i< this.liststk.size(); i++)
+        {
+            System.out.println(this.liststk.get(i).toString());
+        }
+    }
+    public void thanhtienSTK(){
+        double thanhtien = 0.0d;
+        for(int i = 0 ; i < liststk.size(); i++){
+            thanhtien+= liststk.get(i).getSoluong() * liststk.get(i).getDongia()+ liststk.get(i).getThue();
+        }
+        System.out.println(" Thành tiền sách tham khảo: " + thanhtien);
+    }
+    // tính trung bình cộng đơn giá của sách tham khảo
+    public void trungBinhDonGiaSTK(){
+        float tb = 0.0f;
+        float dg = 0.0f;
+        int count = 0;
+        for( int i = 0 ; i< liststk.size(); i++){
+            count++; 
+            dg += liststk.get(i).getDongia();
+        }
+        tb = dg /count;
+        System.out.println("Trung bình đơn gia sách tham khảo là : " + tb);
+    }
+   public void soSanhChuoi(){
+       String chuoi = "X";
+       for( int i = 0 ; i< listsgk.size(); i++){
+           System.out.println(chuoi.equals(listsgk.get(i).getNhaxuatban()));
+       }
+   }
+}
