@@ -1,0 +1,89 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package kethua_bai2;
+
+/**
+ *
+ * @author ThuSinh
+ */
+public class book {
+    private String masach;
+    private String ngaynhap;
+    private float dongia;
+    private int soluong;
+    private String nhaxuatban;
+    
+    book(){
+        this.masach = "";
+        this.ngaynhap = "";
+        this.dongia = 0.0f;
+        this.soluong = 0;
+        this.nhaxuatban = "";
+    }
+
+    public book(String masach, String ngaynhap, float dongia, int soluong, String nhaxuatban) {
+        this.masach = masach;
+        this.ngaynhap = ngaynhap;
+        this.dongia = dongia;
+        this.soluong = soluong;
+        this.nhaxuatban = nhaxuatban;
+      
+    }
+
+    public void setMasach(String masach) {
+        this.masach = masach;
+    }
+
+    public void setNgaynhap(String ngaynhap) {
+        this.ngaynhap = ngaynhap;
+    }
+
+    public void setDongia(float dongia) {
+        this.dongia = dongia;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
+    }
+
+    public void setNhaxuatban(String nhaxuatban) {
+        this.nhaxuatban = nhaxuatban;
+    }
+
+
+    public String getMasach() {
+        return masach;
+    }
+
+    public String getNgaynhap() {
+        return ngaynhap;
+    }
+
+    public float getDongia() {
+        return dongia;
+    }
+
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public String getNhaxuatban() {
+        return nhaxuatban;
+    }
+
+    @Override
+    public String toString() {
+        String st= "";
+        st+=this.masach+ "\t\t";
+        st+=this.ngaynhap + "\t\t" ;
+        st+=this.dongia+ "\t\t" ;
+        st+=this.soluong+ "\t\t" ;
+        st+=this.nhaxuatban+ "\t\t" ;
+        return st;
+    }
+    
+    
+}
